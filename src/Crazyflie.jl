@@ -2,7 +2,7 @@ module Crazyflie
 
 using PyCall
 
-export scan
+export scan, connect, disconnect
 export motor_ramp_test
 
 const bootloader = PyNULL()
