@@ -53,7 +53,7 @@ function connect(uri=_first_available())
     return scf
 end
 
-function connect(alg, uri=_first_available())
+function play(alg, uri=_first_available())
     scf = connect(uri)
     alg(scf.cf)
     disconnect(scf)
@@ -65,3 +65,5 @@ function disconnect(scf)
 end
 
 include("examples.jl")
+
+end # module
