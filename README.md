@@ -1,5 +1,7 @@
 # Crazyflie.jl
 
+[![Build Status](https://travis-ci.org/arlk/Crazyflie.jl.svg?branch=master)](https://travis-ci.org/arlk/Crazyflie.jl) [![codecov](https://codecov.io/gh/arlk/Crazyflie.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/arlk/Crazyflie.jl)
+
 This package provides a Julia interface for [crazyflie-lib-python](https://github.com/bitcraze/crazyflie-lib-python) to communicate with a [crazyflie](https://bitcraze.io).
 
 ## Installation
