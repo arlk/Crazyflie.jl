@@ -2,8 +2,9 @@ module Crazyflie
 
 using PyCall
 
-export scan, connect, disconnect
-export motor_ramp_test
+export scan, connect, disconnect, log
+
+export motor_ramp_test, log_posn, log_quat
 
 const bootloader = PyNULL()
 const crtp = PyNULL()
@@ -12,6 +13,8 @@ const positioning = PyNULL()
 const utils = PyNULL()
 const crazyflie = PyNULL()
 const synccrazyflie = PyNULL()
+const logger = PyNULL()
+const synclogger = PyNULL()
 
 function __init__()
     copy!(bootloader, pyimport("cflib.bootloader"))
@@ -21,6 +24,8 @@ function __init__()
     copy!(utils, pyimport("cflib.utils"))
     copy!(crazyflie, pyimport("cflib.crazyflie"))
     copy!(synccrazyflie, pyimport("cflib.crazyflie.syncCrazyflie"))
+    copy!(logger, pyimport("cflib.crazyflie.log"))
+    copy!(synclogger, pyimport("cflib.crazyflie.syncLogger"))
 
     crtp.init_drivers(enable_debug_driver=false)
     nothing
@@ -55,7 +60,12 @@ end
 
 function play(alg, uri=_first_available())
     scf = connect(uri)
-    alg(scf.cf)
+    try
+        alg(scf.cf)
+    catch e
+        @show e
+        # Catch keyboard interrupts if desired
+    end
     disconnect(scf)
 end
 
@@ -64,6 +74,8 @@ function disconnect(scf)
     nothing
 end
 
+include("log.jl")
+include("plot.jl")
 include("examples.jl")
 
 end # module

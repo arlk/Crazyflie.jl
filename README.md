@@ -9,7 +9,7 @@ This package provides a Julia interface for [crazyflie-lib-python](https://githu
 Follow directions from [crazyflie-lib-python](https://github.com/bitcraze/crazyflie-lib-python) to (system-wide) install the python library and any necessary dependencies. Then from the REPL
 
 ```julia
-julia> ] add https://github.com/arlk/Crazyflie.jl
+julia> ] add Crazyflie
 ```
 
 ## Usage

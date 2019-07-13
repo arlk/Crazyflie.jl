@@ -1,4 +1,4 @@
-function motor_ramp_test(uri=_connect_first())
+function motor_ramp_test(uri=_first_available())
     play(uri) do cf
         cf.commander.send_setpoint(0, 0, 0, 0)
         thrust = 20000
